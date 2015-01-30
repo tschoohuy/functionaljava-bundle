@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <scm>
+        <connection>scm:git:${project.url}.git</connection>
+        <developerConnection>scm:git:${project.url}.git</developerConnection>
+        <url>${project.url}</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <groupId>com.github.tschoohuy</groupId>
+    <artifactId>tschoohuy-functionaljava-bundle</artifactId>
+    <version>${fj.version}-SNAPSHOT</version>
+
+    <packaging>bundle</packaging>
+
+    <name>tschoohuy :: functionaljava-bundle</name>
+
+    <description>tschoohuy functionaljava bundle</description>
+    <properties>
+        <fj.version>4.2</fj.version>
+        <project.url>https://github.com/tschoohuy/functionaljava-bundle</project.url>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Import-Package>
+                            *;resolution:=optional
+                        </Import-Package>
+                        <Export-Package>
+                            fj.*;version=${fj.version}
+                        </Export-Package>
+                        <Embed-Dependency>
+                            functionaljava
+                        </Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava</artifactId>
+            <version>${fj.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
