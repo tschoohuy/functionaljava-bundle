@@ -1,2 +1,2 @@
 # functionaljava-bundle
-osgi bundle embedding functionaljava
+osgi bundle embedding [functionaljava](http://www.functionaljava.org/)
