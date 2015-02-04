@@ -3,6 +3,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
+    <groupId>com.github.tschoohuy</groupId>
+    <artifactId>tschoohuy-functionaljava-bundle</artifactId>
+    <version>4.2-SNAPSHOT</version>
+
+    <packaging>bundle</packaging>
+
+    <name>tschoohuy :: functionaljava-bundle</name>
+    <description>tschoohuy functionaljava bundle</description>
+    <url>${project.url}</url>
+
+    <licenses>
+        <license>
+            <name>Modified BSD license</name>
+            <url>http://directory.fsf.org/wiki/License:BSD_3Clause</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Akos Mocsanyi</name>
+            <email>tsechov@gmail.com</email>
+        </developer>
+    </developers>
+
     <scm>
         <connection>scm:git:${project.url}.git</connection>
         <developerConnection>scm:git:${project.url}.git</developerConnection>
@@ -10,15 +35,14 @@
         <tag>HEAD</tag>
     </scm>
 
-    <groupId>com.github.tschoohuy</groupId>
-    <artifactId>tschoohuy-functionaljava-bundle</artifactId>
-    <version>${fj.version}-SNAPSHOT</version>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
-    <packaging>bundle</packaging>
 
-    <name>tschoohuy :: functionaljava-bundle</name>
-
-    <description>tschoohuy functionaljava bundle</description>
     <properties>
         <fj.version>4.2</fj.version>
         <project.url>https://github.com/tschoohuy/functionaljava-bundle</project.url>
@@ -26,6 +50,19 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -55,4 +92,54 @@
         </dependency>
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
