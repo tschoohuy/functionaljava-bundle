@@ -6,7 +6,7 @@
 
     <groupId>com.github.tschoohuy</groupId>
     <artifactId>tschoohuy-functionaljava-bundle</artifactId>
-    <version>4.2</version>
+    <version>4.2-SNAPSHOT</version>
 
     <packaging>bundle</packaging>
 
