@@ -5,7 +5,7 @@
 
     <groupId>com.github.tschoohuy</groupId>
     <artifactId>tschoohuy-functionaljava-bundle</artifactId>
-    <version>4.3-SNAPSHOT</version>
+    <version>4.3</version>
 
     <packaging>bundle</packaging>
 
@@ -31,7 +31,7 @@
         <connection>scm:git:https://github.com/tschoohuy/functionaljava-bundle.git</connection>
         <developerConnection>scm:git:https://github.com/tschoohuy/functionaljava-bundle.git</developerConnection>
         <url>https://github.com/tschoohuy/functionaljava-bundle</url>
-        <tag>HEAD</tag>
+        <tag>4.3</tag>
     </scm>
 
     <distributionManagement>
