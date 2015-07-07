@@ -43,7 +43,7 @@
 
 
     <properties>
-        <fj.version>4.3</fj.version>
+        <fj.version>4.4</fj.version>
     </properties>
 
     <build>
